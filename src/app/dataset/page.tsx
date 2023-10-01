@@ -1,6 +1,23 @@
-import Link from "next/link";
+import dummyDataset from "../../dummy/dummy_dataset.json" assert { type: "json" };
 
-export default function Portal() {
+type DatasetType = {
+  dataOfficer: string;
+  usage: string;
+  email: string;
+  link: string;
+};
+
+const datasetLabel: {
+  [K in string]: string;
+} = {
+  dataOfficer: "データ管理者",
+  usage: "データ利用方法",
+  email: "メール",
+  link: "リンク",
+};
+
+export default function Dataset() {
+  const dataset = getData();
   return (
     <>
       <div className="flex justify-center h-screen bg-stone02">
@@ -20,22 +37,14 @@ export default function Portal() {
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>データ管理者</td>
-                <td>XXX</td>
-              </tr>
-              <tr>
-                <td>データ利用方法</td>
-                <td>YYY</td>
-              </tr>
-              <tr>
-                <td>連絡先</td>
-                <td>sample@example.com</td>
-              </tr>
-              <tr>
-                <td>リンク</td>
-                <td>http://example.com</td>
-              </tr>
+              {Object.entries(dataset).map(([key, val]) => {
+                return (
+                  <tr key={key}>
+                    <td>{datasetLabel[key] || key}</td>
+                    <td>{val}</td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
 
@@ -60,4 +69,8 @@ export default function Portal() {
       </div>
     </>
   );
+}
+
+function getData(): DatasetType {
+  return dummyDataset;
 }
