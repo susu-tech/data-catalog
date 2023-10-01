@@ -1,8 +1,7 @@
-import { MainButton } from "@/components/mainButton";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-import Link from "next/link";
+import { Header } from "@/components/layouts/headers";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,20 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <header>
-          <div className="bg-main h-12 flex items-center justify-between">
-            <Link href="/">
-              <h1 className="text-white text-xl font-bold ml-2">
-                データカタログ
-              </h1>
-            </Link>
-            <div className="mr-4 flex space-x-2">
-              <MainButton>利用方法</MainButton>
-              <MainButton>カタログ登録</MainButton>
-              <MainButton>カタログAPI</MainButton>
-            </div>
-          </div>
-        </header>
+        <Header />
         {children}
       </body>
     </html>

@@ -1,4 +1,4 @@
-import { MainSearchForm } from "@/components/mainSearchForm";
+import { MainSearchForm } from "@/components/elements/mainSearchForm";
 import Link from "next/link";
 
 export default function Home() {
@@ -58,7 +58,7 @@ const ConditionButton = (props: CondButtonProps) => {
 const DataCard = () => {
   return (
     <div>
-      <Link href="/data">
+      <Link href="/dataset">
         <div className="border px-4 py-2 bg-white hover:bg-main-light">
           <h3 className="text-2xl font-bold text-main">データタイトル</h3>
           <p className="text-sm text-stone04">データ提供組織</p>
